@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: api-gateway
+
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/research_engine
+
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: api-gateway-group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
+server:
+  port: 8080
+
+logging:
+  level:
+    com.research: DEBUG
+    org.springframework.kafka: INFO
